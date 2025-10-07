@@ -15,7 +15,6 @@ except mysql.connector.Error as e:
     messagebox.showerror("Database Error", f"Error connecting to MySQL: {e}")
     exit()
 
-# ---------- Create table if not exists ----------
 cursor.execute("""
 CREATE TABLE IF NOT EXISTS tasks (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -25,8 +24,6 @@ CREATE TABLE IF NOT EXISTS tasks (
 conn.commit()
 
 # ---------- Functions ----------
-
-
 def load_tasks():
     listbox.delete(0, tk.END)
     cursor.execute("SELECT task FROM tasks")
